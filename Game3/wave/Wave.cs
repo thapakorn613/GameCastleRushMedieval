@@ -62,6 +62,7 @@ namespace Game3
             // wave 1 st
             // The Last Jadi
             // TangNaHee
+            // ArtRonin
             Enemy enemy = new Enemy(enemyTexture,
             level.Waypoints.Peek(), waveNumber * 50 + 20 ,3, 1.0f);// set hp
             // set wave 2 nd to fast enemie
