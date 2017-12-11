@@ -61,7 +61,7 @@ namespace Game3
             float change = 0.6f ;
             // wave 1 st
             // The Last Jadi
-
+            // TangNaHee
             Enemy enemy = new Enemy(enemyTexture,
             level.Waypoints.Peek(), waveNumber * 50 + 20 ,3, 1.0f);// set hp
             // set wave 2 nd to fast enemie
