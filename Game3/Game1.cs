@@ -109,6 +109,7 @@ namespace Game3
             player = new Player(level, towerTextures, bulletTexture);
             Texture2D healthTexture = Content.Load<Texture2D>("HP");
 
+            // set number of wave
             waveManeger = new WaveManeger(player, level, 16, enemyTexture,healthTexture);// set wave
             Texture2D topBar = Content.Load<Texture2D>("toolbar");
             SpriteFont font = Content.Load<SpriteFont>("Arial");

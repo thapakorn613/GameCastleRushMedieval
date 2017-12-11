@@ -58,17 +58,89 @@ namespace Game3
         }
         private void AddEnemy()// set wave
         {
-            Enemy enemy = new Enemy(enemyTexture,// wave 1st
+            float change = 0.6f ;
+            // wave 1 st
+            Enemy enemy = new Enemy(enemyTexture,
             level.Waypoints.Peek(), waveNumber * 50 + 20 ,3, 1.0f);// set hp
-            if (waveNumber == 1)// set wave to fast enemie
+            // set wave 2 nd to fast enemie
+            if (waveNumber == 1)
             {
-                float speed = 2.5f;
-                enemy = new Enemy(enemyTexture,level.Waypoints.Peek(), 50, 3, speed);
+                //float speed = 1.25f;
+                enemy = new Enemy(enemyTexture,level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
             }
-            if (waveNumber == 2)// set wave to fast enemie
+            // set wave 3 th to fast enemie
+            if (waveNumber == 2)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 1.0f);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3,(float)waveNumber * change);
             }
+            // set wave 4 th to fast enemie
+            if (waveNumber == 3)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+            // set wave 5 th to fast enemie
+            if (waveNumber == 4)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+            // set wave 6 th to fast enemie
+            if (waveNumber == 5)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+            // set wave 7 th to fast enemie
+            if (waveNumber == 6)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+            // set wave 8 th to fast enemie
+            if (waveNumber == 7)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+            // set wave 9 th to fast enemie
+            if (waveNumber == 8)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+            // set wave 10 th to fast enemie
+            if (waveNumber == 9)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+            // set wave 11 th to fast enemie
+            if (waveNumber == 10)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+            // set wave 12 th to fast enemie
+            if (waveNumber == 11)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+            // set wave 13 th to fast enemie
+            if (waveNumber == 12)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+            // set wave 14 th to fast enemie
+            if (waveNumber == 13)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+            // set wave 15 th to fast enemie
+            if (waveNumber == 14)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+            // set wave 16 th to fast enemie
+            if (waveNumber == 15)
+            {
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+            }
+
+
+
             enemy.SetWaypoints(level.Waypoints);
             enemies.Add(enemy);
             spawnTimer = 0;
