@@ -67,7 +67,7 @@ namespace Game3
             // set wave 2 nd to fast enemie
             if (waveNumber == 1)
             {
-                //float speed = 1.25f;
+                //float speed = 1.25f;  
                 enemy = new Enemy(enemyTexture,level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
             }
             // set wave 3 th to fast enemie
