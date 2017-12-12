@@ -303,3 +303,10 @@
 /processorParam:TextureFormat=Color
 /build:Enemy/Elf5.png
 
+#begin textFont/File.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:textFont/File.spritefont
+

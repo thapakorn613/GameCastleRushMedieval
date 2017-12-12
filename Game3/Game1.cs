@@ -132,6 +132,7 @@ namespace Game3
             Texture2D snipeHover = Content.Load<Texture2D>("Tower/Snipe");
             Texture2D snipePressed = Content.Load<Texture2D>("Tower/Snipe");
             SpriteFont font2 = Content.Load<SpriteFont>("Descrip");
+            // SpriteFont text_data_wave = Content.Load<SpriteFont>("textFont/File");
             // Initialize the arrow button.
             arrowButton = new Button(arrowNormal, arrowHover,arrowPressed, new Vector2(40, level.Height * 50 + 20),font2);
             arrowButton.Clicked += new EventHandler(arrowButton_Clicked);

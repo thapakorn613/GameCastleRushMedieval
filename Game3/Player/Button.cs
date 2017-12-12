@@ -129,6 +129,7 @@ namespace Game3
                     spriteBatch.Draw(hoverTexture, bounds, Color.Green);
                     string text = string.Format("Tower Description");
                     DesctextPosition = new Vector2(600, 300);
+
                     spriteBatch.DrawString(font, text, DesctextPosition, Color.Black);
                     break;
                 case ButtonStatus.Pressed:
