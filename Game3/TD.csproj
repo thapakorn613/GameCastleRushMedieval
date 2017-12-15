@@ -42,6 +42,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AnimateSprite.cs" />
+    <Compile Include="wave2\Wave2.cs" />
+    <Compile Include="wave2\WaveManeger2.cs" />
+    <Compile Include="Level2.cs" />
     <Compile Include="Tower\ArrowTower.cs" />
     <Compile Include="Background.cs" />
     <Compile Include="Tower\Bullet.cs" />
