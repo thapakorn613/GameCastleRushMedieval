@@ -22,6 +22,7 @@ namespace Game3
         SpriteBatch spriteBatch;
         Level level = new Level();
         Level2 level2 = new Level2();
+        Level3 level3 = new Level3();
         //Enemy enemy1;
         //Wave wave;
         WaveManeger waveManeger;
@@ -106,6 +107,27 @@ namespace Game3
             level2.AddTexture(pathD);
             level2.AddTexture(pathRD);
 
+            Texture2D tile = Content.Load<Texture2D>("tile");
+            Texture2D path3 = Content.Load<Texture2D>("Block/path");
+            Texture2D pathLT3 = Content.Load<Texture2D>("Block/pathLT");
+            Texture2D pathT3 = Content.Load<Texture2D>("Block/pathT");
+            Texture2D pathRT3 = Content.Load<Texture2D>("Block/pathRT");
+            Texture2D pathL3 = Content.Load<Texture2D>("Block/pathL");
+            Texture2D pathR3 = Content.Load<Texture2D>("Block/pathR");
+            Texture2D pathLD3 = Content.Load<Texture2D>("Block/pathLD");
+            Texture2D pathD3 = Content.Load<Texture2D>("Block/pathD");
+            Texture2D pathRD3 = Content.Load<Texture2D>("Block/pathRD");
+            level3.AddTexture(tile);// level 2 texture
+            level3.AddTexture(path3);
+            level3.AddTexture(pathLT3);
+            level3.AddTexture(pathT3);
+            level3.AddTexture(pathRT3);
+            level3.AddTexture(pathL3);
+            level3.AddTexture(pathR3);
+            level3.AddTexture(pathLD3);
+            level3.AddTexture(pathD3);
+            level3.AddTexture(pathRD3);
+
 
             Texture2D[] back = new Texture2D[]
             {
@@ -136,7 +158,7 @@ namespace Game3
 
             // set number of wave
             waveManeger = new WaveManeger(player, level, 16, enemyTexture,healthTexture);// set wave1
-            waveManeger2 = new WaveManeger2(player, level2, 20, enemyTexture, healthTexture);// set wave1
+            waveManeger2 = new WaveManeger2(player, level2, 20, enemyTexture, healthTexture);// set wave2
             Texture2D topBar = Content.Load<Texture2D>("toolbar");
             SpriteFont font = Content.Load<SpriteFont>("Arial");
 
@@ -342,7 +364,7 @@ namespace Game3
                 player.DrawPreview(spriteBatch);
             }
             else {
-                //level.Draw(spriteBatch);
+                level3.Draw(spriteBatch);
                 //waveManeger.Draw(spriteBatch);
                 player.Draw(spriteBatch);
                 toolBar.Draw(spriteBatch, player);
