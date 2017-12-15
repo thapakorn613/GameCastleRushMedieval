@@ -30,6 +30,7 @@ namespace Game3
         Button arrowButton;
         Button slowButton;
         Button snipeButton;
+        
 
         public Game1()
         {

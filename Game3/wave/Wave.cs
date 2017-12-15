@@ -58,7 +58,7 @@ namespace Game3
         }
         private void AddEnemy()// set wave
         {
-            float change = 0.6f ;
+            ///float change = 0.6f ;
             // wave 1 st
             // The Last Jadi
             // TangNaHee
@@ -73,76 +73,74 @@ namespace Game3
             // set wave 3 th to fast enemie
             if (waveNumber == 2)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3,(float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3,1.2f);
             }
             // set wave 4 th to fast enemie
             if (waveNumber == 3)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 1.2f);
             }
             // set wave 5 th to fast enemie
             if (waveNumber == 4)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 1.3f);
             }
             // set wave 6 th to fast enemie
             if (waveNumber == 5)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 1.4f);
             }
             // set wave 7 th to fast enemie
             if (waveNumber == 6)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 1.5f);
             }
             // set wave 8 th to fast enemie
             if (waveNumber == 7)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 1.7f);
             }
             // set wave 9 th to fast enemie
             if (waveNumber == 8)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 1.9f);
             }
             // set wave 10 th to fast enemie
             if (waveNumber == 9)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 2.1f);
             }
             // set wave 11 th to fast enemie
             if (waveNumber == 10)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 2.2f);
             }
             // set wave 12 th to fast enemie
             if (waveNumber == 11)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 2.4f);
             }
             // set wave 13 th to fast enemie
             if (waveNumber == 12)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 2.6f);
             }
             // set wave 14 th to fast enemie
             if (waveNumber == 13)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 2.8f);
             }
             // set wave 15 th to fast enemie
             if (waveNumber == 14)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 3.0f);
             }
             // set wave 16 th to fast enemie
             if (waveNumber == 15)
             {
-                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, (float)waveNumber * change);
+                enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50, 3, 3.2f);
             }
-
-
-
+            
             enemy.SetWaypoints(level.Waypoints);
             enemies.Add(enemy);
             spawnTimer = 0;
