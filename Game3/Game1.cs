@@ -15,7 +15,7 @@ namespace Game3
     /// </summary>
     /// tang na hee
     /// Art Ronin
-
+    /// 7-11 TEST
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
