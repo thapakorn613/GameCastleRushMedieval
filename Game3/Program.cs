@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Windows.Forms;
+
 namespace Game3
 {
 #if WINDOWS || LINUX
@@ -14,9 +14,8 @@ namespace Game3
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            using (var game = new Game1())
+                game.Run();
         }
     }
 #endif
