@@ -11,14 +11,16 @@ namespace Game3
 {
     class Background
     {
-        private Texture2D backGround;
-        public void AddTexture(Texture2D texture)// Pass the GPU
+        private Texture2D[] backGround;
+        private Texture2D BGtextures;
+        public void AddTexture(Texture2D[] texture)// Pass the GPU
         {
             backGround = texture;
+            BGtextures = backGround[0];
         }
         public void Draw(SpriteBatch batch)
         {
-            batch.Draw(backGround, new Rectangle(0, 0, 990, 770), Color.White);
+            batch.Draw(BGtextures, new Rectangle(0, 0, 950,741), Color.White);
         }
     }
 }

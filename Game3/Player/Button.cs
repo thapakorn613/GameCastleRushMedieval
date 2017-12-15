@@ -36,6 +36,8 @@ namespace Game3
         // Gets fired when the button is held down.
         public event EventHandler OnPress;
 
+        public string Currentstate;
+
 
         /// <summary>
         /// Constructs a new button.
@@ -44,7 +46,7 @@ namespace Game3
         /// <param name="hoverTexture">The texture drawn when the mouse is over the button.</param>
         /// <param name="pressedTexture">The texture drawn when the button has been pressed.</param>
         /// <param name="position">The position where the button will be drawn.</param>
-        public Button(Texture2D texture, Texture2D hoverTexture, Texture2D pressedTexture, Vector2 position,SpriteFont font)
+        public Button(Texture2D texture, Texture2D hoverTexture, Texture2D pressedTexture, Vector2 position,SpriteFont font,string mainstate)
          : base(texture, position)
         {
             this.hoverTexture = hoverTexture;
@@ -52,6 +54,7 @@ namespace Game3
             this.font = font;
             this.bounds = new Rectangle((int)position.X, (int)position.Y,
                 texture.Width, texture.Height);
+            this.Currentstate = mainstate;
         }
 
         public override void Update(GameTime gameTime)
@@ -123,17 +126,49 @@ namespace Game3
             {
 
                 case ButtonStatus.Normal:
+                    
                     spriteBatch.Draw(texture, bounds, Color.White);
                     break;
                 case ButtonStatus.MouseOver:
-                    spriteBatch.Draw(hoverTexture, bounds, Color.Green);
-                    string text = string.Format("Tower Description");
-                    DesctextPosition = new Vector2(600, 300);
+                    if(Currentstate == "Start")
+                    {
+                        spriteBatch.Draw(hoverTexture, bounds, Color.White);
+                        string text = string.Format("Have fun!!");
+                        DesctextPosition = new Vector2(300, 300);
+                        spriteBatch.DrawString(font, text, DesctextPosition, Color.Black);
+                    }
+                    else if (Currentstate == "Stage1")
+                    {
+                        spriteBatch.Draw(hoverTexture, bounds, Color.White);
+                        string text = string.Format("Stage1");
+                        DesctextPosition = new Vector2(150, 570);
+                        spriteBatch.DrawString(font, text, DesctextPosition, Color.Black);
+                    }
+                    else if (Currentstate == "Stage2")
+                    {
+                        spriteBatch.Draw(hoverTexture, bounds, Color.White);
+                        string text = string.Format("Stage2");
+                        DesctextPosition = new Vector2(450, 570);
+                        spriteBatch.DrawString(font, text, DesctextPosition, Color.Black);
+                    }
+                    else if (Currentstate == "Stage3")
+                    {
+                        spriteBatch.Draw(hoverTexture, bounds, Color.White);
+                        string text = string.Format("Stage3");
+                        DesctextPosition = new Vector2(750, 570);
+                        spriteBatch.DrawString(font, text, DesctextPosition, Color.Black);
+                    }
+                    else
+                    {
 
-                    spriteBatch.DrawString(font, text, DesctextPosition, Color.Black);
+                        spriteBatch.Draw(hoverTexture, bounds, Color.White);
+                    
+                    }
+                    
                     break;
                 case ButtonStatus.Pressed:
-                    spriteBatch.Draw(pressedTexture, bounds, Color.Red);
+
+                    spriteBatch.Draw(pressedTexture, bounds, Color.White);
                     break;
                 default:
                     spriteBatch.Draw(texture, bounds, Color.White);

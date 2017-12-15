@@ -21,9 +21,11 @@ namespace Game3
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Level level = new Level();
+        Level2 level2 = new Level2();
         //Enemy enemy1;
         //Wave wave;
         WaveManeger waveManeger;
+        WaveManeger2 waveManeger2;
         Background background = new Background();
         //Tower tower;
         Player player;
@@ -31,7 +33,12 @@ namespace Game3
         Button arrowButton;
         Button slowButton;
         Button snipeButton;
-        
+        Button StartButton;
+        Button Stage1Button;
+        Button Stage2Button;
+        Button Stage3Button;
+        String state = "StartScreen";
+
 
         public Game1()
         {
@@ -87,8 +94,24 @@ namespace Game3
             level.AddTexture(pathLD);
             level.AddTexture(pathD);
             level.AddTexture(pathRD);
-            //Texture2D back = Content.Load<Texture2D>("Block/background");
-            //background.AddTexture(back);
+
+            level2.AddTexture(grass);// level 2 texture
+            level2.AddTexture(path);
+            level2.AddTexture(pathLT);
+            level2.AddTexture(pathT);
+            level2.AddTexture(pathRT);
+            level2.AddTexture(pathL);
+            level2.AddTexture(pathR);
+            level2.AddTexture(pathLD);
+            level2.AddTexture(pathD);
+            level2.AddTexture(pathRD);
+
+
+            Texture2D[] back = new Texture2D[]
+            {
+                Content.Load<Texture2D>("background")
+            };
+            background.AddTexture(back);
             Texture2D[] enemyTexture = new Texture2D[]
             {
                 Content.Load<Texture2D>("Enemy/Elf1"),
@@ -112,7 +135,8 @@ namespace Game3
             Texture2D healthTexture = Content.Load<Texture2D>("HP");
 
             // set number of wave
-            waveManeger = new WaveManeger(player, level, 16, enemyTexture,healthTexture);// set wave
+            waveManeger = new WaveManeger(player, level, 16, enemyTexture,healthTexture);// set wave1
+            waveManeger2 = new WaveManeger2(player, level2, 20, enemyTexture, healthTexture);// set wave1
             Texture2D topBar = Content.Load<Texture2D>("toolbar");
             SpriteFont font = Content.Load<SpriteFont>("Arial");
 
@@ -133,21 +157,36 @@ namespace Game3
             Texture2D snipeNormal = Content.Load<Texture2D>("Tower/Snipe");
             Texture2D snipeHover = Content.Load<Texture2D>("Tower/Snipe");
             Texture2D snipePressed = Content.Load<Texture2D>("Tower/Snipe");
+            Texture2D StartNormal = Content.Load<Texture2D>("StartButtonPress");
+            Texture2D StartHover = Content.Load<Texture2D>("StartButtonPress");
+            Texture2D StartPressed = Content.Load<Texture2D>("StartButtonNormal");
             SpriteFont font2 = Content.Load<SpriteFont>("Descrip");
             // SpriteFont text_data_wave = Content.Load<SpriteFont>("textFont/File");
             // Initialize the arrow button.
-            arrowButton = new Button(arrowNormal, arrowHover,arrowPressed, new Vector2(40, level.Height * 50 + 20),font2);
+            arrowButton = new Button(arrowNormal, arrowHover,arrowPressed, new Vector2(40, level.Height * 50 + 20),font2, "Arrow");
             arrowButton.Clicked += new EventHandler(arrowButton_Clicked);
             // Initialize the spike button.
-            slowButton = new Button(slowNormal, slowHover, slowPressed, new Vector2(120, level.Height * 50 + 20), font2);
+            slowButton = new Button(slowNormal, slowHover, slowPressed, new Vector2(120, level.Height * 50 + 20), font2, "Slow");
             slowButton.Clicked += new EventHandler(slowButton_Clicked);
 
-            snipeButton = new Button(snipeNormal, snipeHover, snipePressed, new Vector2(200, level.Height * 50 + 20), font2);
+            snipeButton = new Button(snipeNormal, snipeHover, snipePressed, new Vector2(200, level.Height * 50 + 20), font2,"Snipe");
             snipeButton.Clicked += new EventHandler(snipeButton_Clicked);
 
             arrowButton.OnPress += new EventHandler(arrowButton_OnPress);
             slowButton.OnPress += new EventHandler(slowButton_OnPress);
             snipeButton.OnPress += new EventHandler(snipeButton_OnPress);
+
+            StartButton = new Button(StartNormal, StartHover, StartPressed, new Vector2(375, 600), font2,"Start");
+            StartButton.Clicked += new EventHandler(StartButton_Clicked);
+
+            Stage1Button = new Button(StartNormal, StartHover, StartPressed, new Vector2(100, 600), font2, "Stage1");
+            Stage1Button.Clicked += new EventHandler(Stage1Button_Clicked);
+            Stage2Button = new Button(StartNormal, StartHover, StartPressed, new Vector2(400, 600), font2, "Stage2");
+            Stage2Button.Clicked += new EventHandler(Stage2Button_Clicked);
+            Stage3Button = new Button(StartNormal, StartHover, StartPressed, new Vector2(700, 600), font2, "Stage3");
+            Stage3Button.Clicked += new EventHandler(Stage3Button_Clicked);
+
+
         }
         private void arrowButton_Clicked(object sender, EventArgs e)
         {
@@ -179,6 +218,23 @@ namespace Game3
             player.NewTowerType = "Snipe Tower";
             player.NewTowerIndex = 2;
         }
+        private void StartButton_Clicked(object sender, EventArgs e)
+        {
+            this.state = "Menu";
+        }
+        private void Stage1Button_Clicked(object sender, EventArgs e)
+        {
+            this.state = "Stage1";
+        }
+        private void Stage2Button_Clicked(object sender, EventArgs e)
+        {
+            this.state = "Stage2";
+        }
+        private void Stage3Button_Clicked(object sender, EventArgs e)
+        {
+            this.state = "Stage3";
+        }
+
 
 
         /// <summary>
@@ -201,12 +257,41 @@ namespace Game3
                 Exit();
 
             // TODO: Add your update logic here
-
-            waveManeger.Update(gameTime);
+            if (state == "StartScreen")
+            {
+                 StartButton.Update(gameTime);
+            }
+            else if(state == "Menu")
+            {
+                Stage1Button.Update(gameTime);
+                Stage2Button.Update(gameTime);
+                Stage3Button.Update(gameTime);
+            }
+            else if (state == "Stage1")
+            {
+                waveManeger.Update(gameTime);
+                player.Update(gameTime, waveManeger.Enemies);
+                arrowButton.Update(gameTime);
+                slowButton.Update(gameTime);
+                snipeButton.Update(gameTime);
+            }
+            else if (state == "Stage2")
+            {
+                waveManeger2.Update(gameTime);
+                player.Update(gameTime, waveManeger.Enemies);
+                arrowButton.Update(gameTime);
+                slowButton.Update(gameTime);
+                snipeButton.Update(gameTime);
+            }
+            else {
+                waveManeger.Update(gameTime);
             player.Update(gameTime, waveManeger.Enemies);
             arrowButton.Update(gameTime);
             slowButton.Update(gameTime);
             snipeButton.Update(gameTime);
+            }
+            
+            
             base.Update(gameTime);
 
         }
@@ -215,25 +300,64 @@ namespace Game3
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.BlanchedAlmond);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            //background.Draw(spriteBatch);
-            level.Draw(spriteBatch);
-            waveManeger.Draw(spriteBatch);
-            player.Draw(spriteBatch);
-            toolBar.Draw(spriteBatch, player);
-            arrowButton.Draw(spriteBatch);
-            slowButton.Draw(spriteBatch);
-            snipeButton.Draw(spriteBatch);
-            player.DrawPreview(spriteBatch);
-            spriteBatch.End();
+            
+            if(state == "StartScreen")
+            {
+                background.Draw(spriteBatch);
+                StartButton.Draw(spriteBatch);
+            }
+            else if (state == "Menu")
+            {
+                Stage1Button.Draw(spriteBatch);
+                Stage2Button.Draw(spriteBatch);
+                Stage3Button.Draw(spriteBatch);
+            }
+            else if (state == "Stage1")
+            {
+                level.Draw(spriteBatch);
+                waveManeger.Draw(spriteBatch);
+                player.Draw(spriteBatch);
+                toolBar.Draw(spriteBatch, player);
+                arrowButton.Draw(spriteBatch);
+                slowButton.Draw(spriteBatch);
+                snipeButton.Draw(spriteBatch);
+                player.DrawPreview(spriteBatch);
+            }
+            else if (state == "Stage2")
+            {
+                level2.Draw(spriteBatch);
+                waveManeger2.Draw(spriteBatch);
+                player.Draw(spriteBatch);
+                toolBar.Draw(spriteBatch, player);
+                arrowButton.Draw(spriteBatch);
+                slowButton.Draw(spriteBatch);
+                snipeButton.Draw(spriteBatch);
+                player.DrawPreview(spriteBatch);
+            }
+            else {
+                //level.Draw(spriteBatch);
+                //waveManeger.Draw(spriteBatch);
+                player.Draw(spriteBatch);
+                toolBar.Draw(spriteBatch, player);
+                arrowButton.Draw(spriteBatch);
+                slowButton.Draw(spriteBatch);
+                snipeButton.Draw(spriteBatch);
+                player.DrawPreview(spriteBatch);
+            }
+            
 
 
             base.Draw(gameTime);
+
+
+            spriteBatch.End();
         }
     }
 }
