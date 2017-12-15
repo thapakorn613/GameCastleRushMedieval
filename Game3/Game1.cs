@@ -13,7 +13,7 @@ namespace Game3
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    /// May the force be with you ......
+    /// tang na hee
 
     public class Game1 : Game
     {
